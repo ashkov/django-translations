@@ -1,0 +1,21 @@
+{
+  "project": {
+    "dist": "django-translations",
+    "desc": "test"
+  },
+  "release": {
+    "name": "test",
+    "classifier": ""
+  },
+  "urls": {
+    "source": "",
+    "documentation": "",
+    "funding": "",
+    "tracker": ""
+  },
+  "author": {
+    "name": "",
+    "email": ""
+  },
+  "keywords": ""
+}
