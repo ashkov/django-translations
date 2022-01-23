@@ -50,7 +50,7 @@ class Translation(models.Model):
     def __str__(self):
         """Return the representation of the translation."""
         return '{source}: {translation}'.format(
-            source=getattr(self.content_object, self.field),
+            source=getattr(self.content_object, self.field) if hasattr(self.content_object, self.field) else self.field,
             translation=self.text,
         )
 
