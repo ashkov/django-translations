@@ -93,7 +93,8 @@ def _fetch_translations_query_getter(model, lang):
                     _connector=child.connector,
                     _negated=child.negated
                 )
-            children[index] = q
+            if q:
+                children[index] = q
 
         query = Q(*children, _connector=connector, _negated=negated)
 
