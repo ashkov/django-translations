@@ -4,7 +4,7 @@
     "desc": "test"
   },
   "release": {
-    "name": "test",
+    "name": (1, 0, 0, "dev", 0),
     "classifier": ""
   },
   "urls": {
