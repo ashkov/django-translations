@@ -8,6 +8,7 @@ from translations.languages import _get_default_language, \
 from translations.utils import _get_relations_hierarchy, _get_purview, \
     _get_translations
 
+
 __docformat__ = 'restructuredtext'
 
 
@@ -23,9 +24,7 @@ class Context:
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):
-        for (ct_id, objs) in self.mapping.items():
-            for (obj_id, obj) in objs.items():
-                obj.current_lang = None
+        pass
 
     def _get_changed_fields(self):
         r"""
@@ -38,10 +37,10 @@ class Context:
                     default = obj._default_translatable_fields.get(field, None)
                     if text and text != default:
                         yield ({
-                                   'content_type_id': ct_id,
-                                   'object_id': obj_id,
-                                   'field': field,
-                               }, text)
+                            'content_type_id': ct_id,
+                            'object_id': obj_id,
+                            'field': field,
+                        }, text)
 
     def create(self, lang=None):
         r"""
@@ -69,7 +68,6 @@ class Context:
                 field = translation.field
                 text = translation.text
                 obj = self.mapping[ct_id][obj_id]
-                obj.current_lang = lang
                 if field in type(obj)._get_translatable_fields_names():
                     setattr(obj, field, text)
         else:
