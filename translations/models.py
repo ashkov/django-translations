@@ -5,13 +5,13 @@ from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey, \
     GenericRelation
+
 try:
     from django.utils.translation import ugettext_lazy as _
 except ImportError:
     from django.utils.translation import gettext_lazy as _
 
 from translations.querysets import TranslatableQuerySet
-
 
 __docformat__ = 'restructuredtext'
 
@@ -53,7 +53,9 @@ class Translation(models.Model):
     def __str__(self):
         """Return the representation of the translation."""
         return '{source}: {translation}'.format(
-            source=getattr(self.content_object, self.field) if hasattr(self.content_object, self.field) else self.field,
+            source=getattr(self.content_object, self.field) if hasattr(
+                self.content_object, self.field
+            ) else self.field,
             translation=self.text,
         )
 
@@ -92,14 +94,14 @@ class Translatable(models.Model):
                 fields = []
                 for field in cls._meta.get_fields():
                     if isinstance(
-                                field,
-                                (models.CharField, models.TextField,)
-                            ) and not isinstance(
-                                field,
-                                models.EmailField
-                            ) and not (
-                                hasattr(field, 'choices') and field.choices
-                            ):
+                            field,
+                            (models.CharField, models.TextField,)
+                    ) and not isinstance(
+                        field,
+                        models.EmailField
+                    ) and not (
+                            hasattr(field, 'choices') and field.choices
+                    ):
                         fields.append(field)
             else:
                 fields = [
