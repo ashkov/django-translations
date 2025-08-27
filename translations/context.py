@@ -23,7 +23,9 @@ class Context:
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):
-        pass
+        for (ct_id, objs) in self.mapping.items():
+            for (obj_id, obj) in objs.items():
+                obj.current_lang = None
 
     def _get_changed_fields(self):
         r"""
