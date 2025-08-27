@@ -1,13 +1,13 @@
 import json
 
-from django.test import TestCase
+from tests.test_case import TranslationTestCase
 from django.urls import reverse
 
 from sample.models import Continent
 from sample.utils import create_samples
 
 
-class GetContinentListTest(TestCase):
+class GetContinentListTest(TranslationTestCase):
     """Tests for `get_continent_list`."""
 
     def test_fallback(self):
@@ -38,6 +38,25 @@ class GetContinentListTest(TestCase):
             json.loads(response.content.decode('utf-8')),
             [
                 {
+                    'code': 'AS',
+                    'name': 'Asia',
+                    'denonym': 'Asian',
+                    'countries': [
+                        {
+                            'code': 'KR',
+                            'name': 'South Korea',
+                            'denonym': 'South Korean',
+                            'cities': [
+                                {
+                                    'id': seoul.id,
+                                    'name': 'Seoul',
+                                    'denonym': 'Seouler'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
                     'code': 'EU',
                     'name': 'Europe',
                     'denonym': 'European',
@@ -56,25 +75,6 @@ class GetContinentListTest(TestCase):
                         }
                     ]
                 },
-                {
-                    'code': 'AS',
-                    'name': 'Asia',
-                    'denonym': 'Asian',
-                    'countries': [
-                        {
-                            'code': 'KR',
-                            'name': 'South Korea',
-                            'denonym': 'South Korean',
-                            'cities': [
-                                {
-                                    'id': seoul.id,
-                                    'name': 'Seoul',
-                                    'denonym': 'Seouler'
-                                }
-                            ]
-                        }
-                    ]
-                }
             ]
         )
 
@@ -106,6 +106,25 @@ class GetContinentListTest(TestCase):
             json.loads(response.content.decode('utf-8')),
             [
                 {
+                    'code': 'AS',
+                    'name': 'Asien',
+                    'denonym': 'Asiatisch',
+                    'countries': [
+                        {
+                            'code': 'KR',
+                            'name': 'Südkorea',
+                            'denonym': 'Südkoreanisch',
+                            'cities': [
+                                {
+                                    'id': seoul.id,
+                                    'name': 'Seül',
+                                    'denonym': 'Seüler'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
                     'code': 'EU',
                     'name': 'Europa',
                     'denonym': 'Europäisch',
@@ -124,25 +143,6 @@ class GetContinentListTest(TestCase):
                         }
                     ]
                 },
-                {
-                    'code': 'AS',
-                    'name': 'Asien',
-                    'denonym': 'Asiatisch',
-                    'countries': [
-                        {
-                            'code': 'KR',
-                            'name': 'Südkorea',
-                            'denonym': 'Südkoreanisch',
-                            'cities': [
-                                {
-                                    'id': seoul.id,
-                                    'name': 'Seül',
-                                    'denonym': 'Seüler'
-                                }
-                            ]
-                        }
-                    ]
-                }
             ]
         )
 
@@ -174,6 +174,25 @@ class GetContinentListTest(TestCase):
             json.loads(response.content.decode('utf-8')),
             [
                 {
+                    'code': 'AS',
+                    'name': 'Asien',
+                    'denonym': 'Asiatisch',
+                    'countries': [
+                        {
+                            'code': 'KR',
+                            'name': 'Südkorea',
+                            'denonym': 'Südkoreanisch',
+                            'cities': [
+                                {
+                                    'id': seoul.id,
+                                    'name': 'Seül',
+                                    'denonym': 'Seüler'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
                     'code': 'EU',
                     'name': 'Europa',
                     'denonym': 'Europäisch',
@@ -192,30 +211,11 @@ class GetContinentListTest(TestCase):
                         }
                     ]
                 },
-                {
-                    'code': 'AS',
-                    'name': 'Asien',
-                    'denonym': 'Asiatisch',
-                    'countries': [
-                        {
-                            'code': 'KR',
-                            'name': 'Südkorea',
-                            'denonym': 'Südkoreanisch',
-                            'cities': [
-                                {
-                                    'id': seoul.id,
-                                    'name': 'Seül',
-                                    'denonym': 'Seüler'
-                                }
-                            ]
-                        }
-                    ]
-                }
             ]
         )
 
 
-class GetContinentDetailTest(TestCase):
+class GetContinentDetailTest(TranslationTestCase):
     """Tests for `get_continent_detail`."""
 
     def test_fallback(self):

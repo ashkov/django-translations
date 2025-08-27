@@ -96,7 +96,7 @@ http://localhost:8000/sample/continent/list/
 This API endpoint is used to show a list of continents and their respective
 countries and cities.
 
-http://localhost:8000/sample/continent/1/
+http://localhost:8000/sample/continent/EU/
 
 This API endpoint is used to show a certain continent and its
 countries and cities.
@@ -171,7 +171,7 @@ To lint the code:
 Releasing a version
 *******************
 
-Creating a git tag automatically causes Travis CI to:
+Creating a git tag automatically causes CI to:
 
 - Lint the code
 - Run unit tests
